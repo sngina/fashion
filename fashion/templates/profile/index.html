@@ -26,15 +26,14 @@
 
 </div>
 <div class="row">
-    {%for photo in all_images% }
-
+    {%for photo in all_images%}
     <div class="card"> 
-        <a href="{%url 'image' photo.id}"><img src="{{photo.image_photo.url}}"onclick="onClick(this)"
+        <a href="{%url 'image' photo.id}"><img src="{{photo.image_photo.url}}" style="width: 700px;"     onclick="onClick(this)"
             class="modal-hover-opacity img-fluid"></a>
             <p>{{photo.image_name}}</p>
             <p>{{photo.image_photo}}</p>
             <p>{{photo.description}}</p>
     </div>
     {%endfor%}
-
 </div>
+{%endblock%}

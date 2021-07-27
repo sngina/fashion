@@ -18,6 +18,7 @@ def get_images(request):
         form = ImageForm(request.POST , request.FILES)
         if form.is_valid():
             form.save()
+            return redirect ('homepage')
     c_form = ReviewForm()
     form = ImageForm()
     return render(request , 'profile/index.html', {"all_images":all_images, "imageform":form , "c_form" :c_form, "review":review})
