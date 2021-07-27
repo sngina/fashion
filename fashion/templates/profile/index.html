@@ -1,0 +1,40 @@
+{%extends 'registration/base.html'%}
+{%load crispy_forms_tags%}
+{% load bootstrap3%}
+{% block content%}
+<div class="post">
+
+    <form action="{% url 'homepage'%}" method="post" enctype="multipart/form-data">
+        {%csrf_token %}
+        <div class="form">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"
+                style="text-align:left;">
+                Post a photo
+            </button>
+        </div>
+        <div class="modal" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content p-2">
+                    {% bootstrap_form imageform %}
+                    <input type="submit" class="btn btn-primary" style="width: 40%;">
+
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+<div class="row">
+    {%for photo in all_images% }
+
+    <div class="card"> 
+        <a href="{%url 'image' photo.id}"><img src="{{photo.image_photo.url}}"onclick="onClick(this)"
+            class="modal-hover-opacity img-fluid"></a>
+            <p>{{photo.image_name}}</p>
+            <p>{{photo.image_photo}}</p>
+            <p>{{photo.description}}</p>
+    </div>
+    {%endfor%}
+
+</div>
