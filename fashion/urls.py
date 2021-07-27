@@ -7,6 +7,7 @@ urlpatterns = [
     url('^$' , views.get_images , name= 'homepage'),
     url('^user/' , views.userpage , name= 'username') ,
     url('^image/(?P<id>[0-9]+)$' , views.image_details , name ='image'),
+    url('^review/' , views.review_image , name ='review'),
 
 ]
 if settings.DEBUG:

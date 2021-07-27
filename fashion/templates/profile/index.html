@@ -38,5 +38,18 @@
     </div>
 </div>
     {%endfor%}
+    <div class="review">
+        {% for reviews in review%}
+        {%if new.id == reviews.post.id%}
+        <p>{{reviews.body}}</p>
+        {%endif%}
+        {%endfor%}
+        <form action="{%url 'review'%}" method="POST" enctype="multipart/form-data">
+            {%csrf_token%}
+            <input type="hidden" value='{{project.id}}' name="projectid">
+            {% bootstrap_form c_form %}
+            <input type="submit" class="btn btn-success btn-success" value="Add Review">
+        </form>
+    </div>
 </div>
 {%endblock%}
