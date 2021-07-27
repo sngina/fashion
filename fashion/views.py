@@ -27,5 +27,11 @@ def userpage(request):
 	user_form = UserForm(instance=request.user)
 	profile_form = ProfileForm(instance=request.user.profile)
 	return render(request,"user.html", context={"user":request.user, "user_form":user_form, "profile_form":profile_form })
+    
+# function for clicking on one image
+def image_details(request , id):
+    one_image = Image.objects.get(id = id)
+    print(request)
+    return render(request , 'profile/image.html' , {"one_image": one_image})
 
 # search for profile
