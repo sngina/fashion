@@ -18,4 +18,8 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
         fields = ('body' ,'post' ,'name')
-    
+        
+class UserForm(forms.ModelForm):
+    class Meta:
+        model = User 
+        fields = ('username' , 'first_name' ,'last_name', 'email' )   
