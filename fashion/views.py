@@ -27,11 +27,25 @@ def userpage(request):
 	user_form = UserForm(instance=request.user)
 	profile_form = ProfileForm(instance=request.user.profile)
 	return render(request,"user.html", context={"user":request.user, "user_form":user_form, "profile_form":profile_form })
-    
+
 # function for clicking on one image
 def image_details(request , id):
     one_image = Image.objects.get(id = id)
     print(request)
     return render(request , 'profile/image.html' , {"one_image": one_image})
 
-# search for profile
+# review
+def review_image(request):
+    if request.method == 'POST':
+        review_form = ReviewForm(request.POST)
+        if review_form.is_valid():
+            img_id = int(request.POST.get('imageid'))
+            image = Image.objects.get(id=img_id)
+            new_review = review_form.save(commit = False)
+            new_review.name = request.user
+            new_review.post = image
+            new_review.save()
+
+        return redirect('homepage')
+
+            
