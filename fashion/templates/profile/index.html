@@ -7,10 +7,11 @@
     <form action="{% url 'homepage'%}" method="post" enctype="multipart/form-data">
         {%csrf_token %}
         <div class="form">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"
+            <button type="button"  class='btn btn-outline-secondary'  data-toggle="modal" data-target="#myModal"
                 style="text-align:left;">
                 Post a photo
-            </button>
+                <i class="fas fa-camera-retro"></i>
+            </button> <br>
         </div>
         <div class="modal" id="myModal">
             <div class="modal-dialog">
