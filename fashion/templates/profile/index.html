@@ -36,6 +36,7 @@
             <p>{{photo.image_name}}</p>
             <p>{{photo.image_photo}}</p>
             <p>{{photo.description}}</p>
+            <i class="fas fa-share-square"></i> <br>
             {% for review in photo.reviews.all%}
             <i class="fas fa-comment-dots"></i>
             <p>{{review.body}}</p>

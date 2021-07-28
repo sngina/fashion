@@ -7,9 +7,9 @@
       <h2> Found 0 user for the search term {{message}}</h2>
     {% endif %}
 
-{% for new in  searched_user %}
+{% for photo in  searched_user %}
 <div class="container1">
-    <img src="{{new.image_photo.url}}" style="max-width:100%;cursor:pointer" width="500px" onclick="onClick(this)"
+    <img src="{{photo.image_photo.url}}"  style="max-width:100%;cursor:pointer" width="500px" onclick="onClick(this)"
         class="modal-hover-opacity img-fluid">
  </div>
  <div id="modal01" class="modal" onclick="this.style.display='none'">

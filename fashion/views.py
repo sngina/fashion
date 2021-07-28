@@ -41,12 +41,12 @@ def image_details(request , id):
 # search function
 
 def search(request) :
-        if 'profile' in request.GET and request.GET["profile"]:
-            search_term = request.GET.get("profile")
-            search_profile = Profile.search_profile(search_term)
+        if 'image' in request.GET and request.GET["image"]:
+            search_term = request.GET.get("image")
+            search_image = Image.search_profile(search_term)
             message = f"{search_term}"
 
-            return render(request , 'profile/search.html' ,{"message" : message , "search_profile":search_profile} ) 
+            return render(request , 'profile/search.html' ,{"message" : message , "search_profile":search_image} ) 
 
         else:
             message = "You haven't searched for any profile"
