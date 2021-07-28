@@ -26,25 +26,30 @@
     </form>
 
 </div>
+ <div class="container">
 <div class="row">
     {%for photo in all_images%}
-    <div class="col-sm-6 col-md-3">
-        <div class="card">
+    <div class="col-sm-6 col-md-3 mt-3 mb-2">
+        <div class="card photo">
             <a href="{%url 'image' photo.id%}"><img src="{{photo.image_photo.url}}" style="width: 700px;"     onclick="onClick(this)"
             class="modal-hover-opacity img-fluid"></a>
             <p>{{photo.image_name}}</p>
             <p>{{photo.image_photo}}</p>
             <p>{{photo.description}}</p>
             {% for review in photo.reviews.all%}
+            <i class="fas fa-comment-dots"></i>
             <p>{{review.body}}</p>
             {%endfor%}
     </div>
 </div>
     {%endfor%}
+</div>
+</div>
+    <div class="container  d-flex justify-content-center align-items-center mt-5 mb-5">
+        <div class="row">
     <div class="review">
         
         <form method="POST" enctype="multipart/form-data">
-            <i class="fas fa-comment-dots"></i>
             {%csrf_token%}
             <input type="hidden" value='{{project.id}}' name="projectid">
             {% bootstrap_form c_form %}
@@ -52,4 +57,5 @@
         </form>
     </div>
 </div>
+</div>  
 {%endblock%}

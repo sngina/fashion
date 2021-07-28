@@ -1,0 +1,21 @@
+{%extends 'registration/base.html'%} 
+{% block content%}
+
+{% if searched_user%}
+      <h2>Found {{ searched_user |length }} of searched term {{message}}</h2>
+    {% else %}
+      <h2> Found 0 user for the search term {{message}}</h2>
+    {% endif %}
+
+{% for new in  searched_user %}
+<div class="container1">
+    <img src="{{new.image_photo.url}}" style="max-width:100%;cursor:pointer" width="500px" onclick="onClick(this)"
+        class="modal-hover-opacity img-fluid">
+ </div>
+ <div id="modal01" class="modal" onclick="this.style.display='none'">
+    <span class="close">&times;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <div class="modal-content">
+    </div>
+</div>
+{%endfor%}
+{%endblock%}

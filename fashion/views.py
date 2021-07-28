@@ -38,15 +38,16 @@ def image_details(request , id):
     one_image = Image.objects.get(id = id)
     return render(request , 'profile/image.html' , {"one_image": one_image})
 
-# review
-# def review_image(request):
-#     if request.method == 'POST':
-#         review_form = ReviewForm(request.POST)
-#         if review_form.is_valid():
-#             review_form.save()
+# search function
 
-#         return redirect('homepage')
+def search(request) :
+        if 'profile' in request.GET and request.GET["profile"]:
+            search_term = request.GET.get("profile")
+            search_profile = Profile.search_profile(search_term)
+            message = f"{search_term}"
 
-# function for searching for an outfit
+            return render(request , 'profile/search.html' ,{"message" : message , "search_profile":search_profile} ) 
 
-            
+        else:
+            message = "You haven't searched for any profile"
+            return render(request , 'profile/search.html') 
