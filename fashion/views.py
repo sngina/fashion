@@ -15,12 +15,17 @@ def get_images(request):
     all_images = Image.objects.all()
     review = Review.objects.all()
     if request.method == 'POST':
+        c_form = ReviewForm(request.POST)
         form = ImageForm(request.POST , request.FILES)
         if form.is_valid():
             form.save()
             return redirect ('homepage')
-    c_form = ReviewForm()
-    form = ImageForm()
+        if c_form.is_valid():
+            c_form.save()
+            return redirect('homepage')
+    else:
+        c_form = ReviewForm()
+        form = ImageForm()
     return render(request , 'profile/index.html', {"all_images":all_images, "imageform":form , "c_form" :c_form, "review":review})
 
 def userpage(request):
@@ -34,18 +39,14 @@ def image_details(request , id):
     return render(request , 'profile/image.html' , {"one_image": one_image})
 
 # review
-def review_image(request):
-    if request.method == 'POST':
-        review_form = ReviewForm(request.POST)
-        if review_form.is_valid():
-            img_id = int(request.POST.get('imageid'))
-            image = Image.objects.get(id=img_id)
-            new_review = review_form.save(commit = False)
-            new_review.name = request.user
-            new_review.post = image
-            new_review.save()
+# def review_image(request):
+#     if request.method == 'POST':
+#         review_form = ReviewForm(request.POST)
+#         if review_form.is_valid():
+#             review_form.save()
 
-        return redirect('homepage')
+#         return redirect('homepage')
+
 # function for searching for an outfit
 
             
