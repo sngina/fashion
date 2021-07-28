@@ -35,15 +35,14 @@
             <p>{{photo.image_name}}</p>
             <p>{{photo.image_photo}}</p>
             <p>{{photo.description}}</p>
+            {% for review in photo.reviews.all%}
+            <p>{{review.body}}</p>
+            {%endfor%}
     </div>
 </div>
     {%endfor%}
     <div class="review">
-        {% for reviews in review%}
-        {%if new.id == reviews.post.id%}
-        <p>{{reviews.body}}</p>
-        {%endif%}
-        {%endfor%}
+        
         <form method="POST" enctype="multipart/form-data">
             <i class="fas fa-comment-dots"></i>
             {%csrf_token%}
