@@ -1,1 +1,1 @@
-web: gunicorn pintrest.wsgi--log-file -
+web: gunicorn pintrest.wsgi --log-file -
